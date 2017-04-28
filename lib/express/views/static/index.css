@@ -1,0 +1,50 @@
+body {
+    padding: 60px 10px;
+    padding-top: 100px;
+}
+
+#__uploader {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    background: #fff;
+    z-index: 1;
+}
+#__uploader fieldset{
+    width: 97%;
+}
+#__uploader div {
+    position: relative;
+}
+
+#__uploader div.pick {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#__uploader div.pick div {
+    height: 100%;
+}
+
+#__imgList tbody img {
+    width: 40px;
+    height: auto;
+}
+
+#__btnGroup {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 40px;
+    background: #2F4056;
+    left: 0;
+    bottom: 0;
+    text-align: right;
+    color: #fff;
+}
