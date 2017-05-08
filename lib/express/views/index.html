@@ -27,6 +27,13 @@
                 <div class="pick"></div>
             </div>
         </fieldset>
+        <p class="msg" id="__uploaderMsg">
+            <span>已添加【{{add}}】</span>
+            <span>上传中【{{upload}}】</span>
+            <span>完成【{{success}}】</span>
+            <span>失败【{{error}}】</span>
+            <span>处理结束【{{end}}】</span>
+        </p>
     </div>
     <div class="layui-form">
 
@@ -46,7 +53,11 @@
             </thead>
             <tbody>
                 <tr v-for="item in list">
-                    <td><img :src="item.url" alt=""></td>
+                    <td>
+                        <div class="img">
+                            <a :href="item.url" target="_blank"> <img :src="item.url" alt=""></a>
+                        </div>
+                    </td>
                     <td>
                         <div class="layui-progress layui-progress-big" :lay-filter="item.id">
                             <div class="layui-progress-bar"></div>
@@ -56,7 +67,7 @@
                         {{( item.size/ 1024 / 1024).toFixed(3) + 'M'}}
                         <i class="layui-icon">&#xe644;</i> {{( item.serverSize/ 1024 / 1024).toFixed(3) + 'M'}}
                         <span v-if="item.displaySize > 0 "><br>压缩：{{ ((item.displaySize/item.size)*100).toFixed(1) + '%'}}</span>
-                        <span v-else-if="item.displaySize < 0"><br>增加：{{ ((item.displaySize/item.serverSize)*100).toFixed(1)+ '%'}}</span>
+                        <span v-else-if="item.displaySize < 0"><br>增加：{{ (-(item.displaySize/item.serverSize)*100).toFixed(1)+ '%'}}</span>
                         <span v-else><br>无变化</span>
                     </td>
                     <td>{{item.message}}</td>
@@ -67,7 +78,7 @@
 
     <div class="layui-btn-group" id="__btnGroup">
         <button class="layui-btn" id="__btnDownload">
-            <i class="layui-icon">&#xe601;</i> 下载全部
+            <i class="layui-icon">&#xe601;</i> 下载全部已完成的
         </button>
     </div>
     <script src="static/jquery/jquery-3.1.1.js"></script>

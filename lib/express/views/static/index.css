@@ -1,6 +1,6 @@
 body {
     padding: 60px 10px;
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 #__uploader {
@@ -8,13 +8,15 @@ body {
     width: 100%;
     left: 0;
     top: 0;
-    padding: 10px;
+    padding: 10px 10px 20px;
     background: #fff;
     z-index: 1;
 }
-#__uploader fieldset{
+
+#__uploader fieldset {
     width: 97%;
 }
+
 #__uploader div {
     position: relative;
 }
@@ -32,9 +34,23 @@ body {
     height: 100%;
 }
 
+#__uploader p.msg {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 95%;
+    text-align: right;
+}
+
 #__imgList tbody img {
     width: 40px;
     height: auto;
+    transition: all .3s;
+}
+
+#__imgList tbody .img {
+    height: 40px;
+    overflow: hidden;
 }
 
 #__btnGroup {
