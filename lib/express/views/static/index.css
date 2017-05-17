@@ -16,6 +16,11 @@ body {
 #__uploader fieldset {
     width: 97%;
 }
+#__uploader legend i{
+    font-size: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
 
 #__uploader div {
     position: relative;
