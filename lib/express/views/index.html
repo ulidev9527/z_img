@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in list">
+                <tr v-for="item in list" :class="item.status">
                     <td>
                         <div class="img">
                             <a :href="item.url" target="_blank"> <img :src="item.url" alt=""></a>
@@ -65,9 +65,9 @@
                     </td>
                     <td>
                         {{( item.size/ 1024 / 1024).toFixed(3) + 'M'}}
-                        <i class="layui-icon">&#xe644;</i> {{( item.serverSize/ 1024 / 1024).toFixed(3) + 'M'}}
-                        <span v-if="item.displaySize > 0 "><br>压缩：{{ ((item.displaySize/item.size)*100).toFixed(1) + '%'}}</span>
-                        <span v-else-if="item.displaySize < 0"><br>增加：{{ (-(item.displaySize/item.serverSize)*100).toFixed(1)+ '%'}}</span>
+                        <i class="layui-icon">&#xe644;</i> {{( item.serverSize/ 1024 / 1024).toFixed(3) + 'M'}} <i class="layui-icon">&#xe644;</i>
+                        <span v-if="item.size>item.serverSize"><br>压缩：{{ (((item.size-item.serverSize)/item.size)*100).toFixed(1) + '%'}}</span>
+                        <span v-else-if="item.size<item.serverSize"><br>增加：{{ (((item.serverSize-item.size)/item.serverSize)*100).toFixed(1)+ '%'}}</span>
                         <span v-else><br>无变化</span>
                     </td>
                     <td>{{item.message}}</td>

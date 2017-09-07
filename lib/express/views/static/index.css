@@ -58,6 +58,13 @@ body {
     overflow: hidden;
 }
 
+#__imgList tbody tr.success td{
+    background-color: #dff0d8;
+}
+#__imgList tbody tr.danger td{
+    background-color: #f2dede;
+}
+
 #__btnGroup {
     position: fixed;
     z-index: 1;
