@@ -1,6 +1,6 @@
 {
   "name": "zimg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "图片操作工具",
   "main": "index.js",
   "repository": {
