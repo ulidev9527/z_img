@@ -56,7 +56,7 @@
 
 **依赖包**
 
->> [imagemin](https://www.npmjs.com/package/imagemin) 、[imagemin-mozjpeg](https://www.npmjs.com/package/imagemin-mozjpeg) 、[imagemin-pngquant](https://www.npmjs.com/package/imagemin-pngquant) 、[co](https://www.npmjs.com/package/co) 、[fs](http://nodejs.cn/api/fs.html)
+>> [imagemin](https://www.npmjs.com/package/imagemin) 
 
 **使用方式**
 
