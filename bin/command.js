@@ -1,6 +1,5 @@
 const
     fs = require('fs'),
-    commandList = ['v', 'version', '-v', '-version', 'h', 'help', '-h', '-help'],
     runCommand = (() => {
         function version() {
             console.log('\nversion', require('../package.json').version, '\n');
@@ -10,39 +9,57 @@ const
 
             console.log(`
 command:
-['v', 'version', '-v', '-version'] ['h', 'help', '-h', '-help']
-v ----show version
-h ----show help
+-v ----show version
+-h ----show help
+-r ---run server 
             `);
 
         }
+
+        function run(port) {
+            require('../lib/runServer')(port);
+        }
         return {
-            v: version,
-            version: version,
-            '-v': version,
-            '-version': version,
-            h: help,
-            help: help,
-            '-h': help,
-            '-help': help
+            'v': version,
+            'h': help,
+            'r': run
         }
 
     })();
 
 
 
-
+//如果是命令处理就运行命令
 function isCommand(arr) {
-    let isCom = false;
-    for (let i = 0; i < arr.length; i++) {
-        if (commandList.indexOf(arr[i]) > -1) {
-            isCom = true;
-            runCommand[arr[i]]();
-            break;
+    let
+        com = arr.toString().split('-'),
+        port = 3000;
+
+    com.splice(0, 1);
+    com = com.toString().split(',');
+    if (com.length > 1) {
+        if (com[0] == 'r') {
+            port = parseInt(com[1]);
+            com = 'r';
         }
+    } else {
+        com = com[0];
+    }
+    switch (com) {
+        case 'v':
+            runCommand.v();
+            break;
+        case 'h':
+            runCommand.h();
+            break;
+        case 'r':
+            runCommand.r(port);
+            break;
+        default:
+            return arr;
+            break;
     }
 
-    return isCom;
 }
 
 
