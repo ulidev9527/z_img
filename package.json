@@ -8,7 +8,7 @@
     "url": "git+https://github.com/zoeDylan/z_img.git"
   },
   "author": "zoeDylan",
-  "license": "Apache",
+  "license": "MIT",
   "bin": {
     "zimg": "./bin/index.js"
   },
