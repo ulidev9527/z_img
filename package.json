@@ -1,7 +1,7 @@
 {
   "name": "zimg",
-  "version": "1.1.1",
-  "description": "图片操作工具",
+  "version": "1.201904.1",
+  "description": "图片压缩操作工具",
   "main": "index.js",
   "repository": {
     "type": "git",

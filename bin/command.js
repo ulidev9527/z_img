@@ -1,5 +1,4 @@
 const
-    fs = require('fs'),
     runCommand = (() => {
         function version() {
             console.log('\nversion', require('../package.json').version, '\n');
@@ -9,9 +8,17 @@ const
 
             console.log(`
 command:
--v ----show version
--h ----show help
+-c ---compress file 
+   default =  '-c' , You don't need this parameter '-c'
+   'zimg':  Compress the current folder img files
+   'zimg [img file]': Compress the img file
+   'zimg [file] [file]': Compress the two files
+   'zimg [file] [file] ...': Compress more specified files
+-v ---show version
+-h ---show help
 -r ---run server 
+    'zimg -r': run server at port : 3000 
+    'zimg -r [port]' run server at port : set port
             `);
 
         }
@@ -32,34 +39,20 @@ command:
 //如果是命令处理就运行命令
 function isCommand(arr) {
     let
-        com = arr.toString().split('-'),
-        port = 3000;
-
-    com.splice(0, 1);
-    com = com.toString().split(',');
-    if (com.length > 1) {
-        if (com[0] == 'r') {
-            port = parseInt(com[1]);
-            com = 'r';
-        }
+        com = arr.toString().split('-');
+    com[0].length === 0 && com.shift();
+    com = com[0];
+    if (/^v/.test(com)) {
+        runCommand.v();
+    } else if (/^h|^\?/.test(com)) {
+        runCommand.h();
+    } else if (/^r/.test(com)) {
+        runCommand.r(com.split(',')[1] || 3000);
+    } else if (/^c/.test(com)) {
+        return com.replace('c,', '').replace(/^c/, '');
     } else {
-        com = com[0];
+        return com.split(',');
     }
-    switch (com) {
-        case 'v':
-            runCommand.v();
-            break;
-        case 'h':
-            runCommand.h();
-            break;
-        case 'r':
-            runCommand.r(port);
-            break;
-        default:
-            return arr;
-            break;
-    }
-
 }
 
 
